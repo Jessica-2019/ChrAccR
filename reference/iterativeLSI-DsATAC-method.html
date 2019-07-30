@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>getCountsSE-methods — getCountsSE,DsATAC-method • ChrAccR</title>
+<title>iterativeLSI-methods — iterativeLSI,DsATAC-method • ChrAccR</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="getCountsSE-methods — getCountsSE,DsATAC-method" />
+<meta property="og:title" content="iterativeLSI-methods — iterativeLSI,DsATAC-method" />
 
-<meta property="og:description" content="Return a SummarizedExperiment object of count values" />
+<meta property="og:description" content="EXPERIMENTAL: Perform iterative LSI clustering as described in doi:10.1101/696328" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,19 +109,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>getCountsSE-methods</h1>
+    <h1>iterativeLSI-methods</h1>
     
-    <div class="hidden name"><code>getCountsSE-DsATAC-method.Rd</code></div>
+    <div class="hidden name"><code>iterativeLSI-DsATAC-method.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Return a <code>SummarizedExperiment</code> object of count values</p>
+    <p>EXPERIMENTAL: Perform iterative LSI clustering as described in doi:10.1101/696328</p>
     
     </div>
 
     <pre class="usage"><span class='co'># S4 method for DsATAC</span>
-<span class='fu'>getCountsSE</span>(<span class='no'>.object</span>, <span class='no'>type</span>, <span class='kw'>naIsZero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>iterativeLSI</span>(<span class='no'>.object</span>, <span class='kw'>it0regionType</span> <span class='kw'>=</span> <span class='st'>"t5k"</span>,
+  <span class='kw'>it0nMostAcc</span> <span class='kw'>=</span> <span class='fl'>20000L</span>, <span class='kw'>it0pcs</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>25</span>, <span class='kw'>it0clusterResolution</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
+  <span class='kw'>it0nTopPeaksPerCluster</span> <span class='kw'>=</span> <span class='fl'>2e+05</span>, <span class='kw'>it1pcs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>50</span>,
+  <span class='kw'>it1clusterResolution</span> <span class='kw'>=</span> <span class='fl'>0.8</span>, <span class='kw'>it1mostVarPeaks</span> <span class='kw'>=</span> <span class='fl'>50000L</span>,
+  <span class='kw'>it2pcs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>50</span>, <span class='kw'>it2clusterResolution</span> <span class='kw'>=</span> <span class='fl'>0.8</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,26 +135,52 @@
       <td><p><code><a href='DsATAC-class.html'>DsATAC</a></code> object</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>character string specifying the region type</p></td>
+      <th>it0regionType</th>
+      <td><p>character string specifying the region type to start with</p></td>
     </tr>
     <tr>
-      <th>naIsZero</th>
-      <td><p>should <code>NA</code>s in the count matrix be considered 0 value (instead of unknown/missing)</p></td>
+      <th>it0nMostAcc</th>
+      <td><p>the number of the most accessible regions to consider in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it0pcs</th>
+      <td><p>the principal components to consider in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it0clusterResolution</th>
+      <td><p>resolution paramter for Seurat's  clustering (<code>Seurat::FindClusters</code>) in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it0nTopPeaksPerCluster</th>
+      <td><p>the number of best peaks to be considered for each cluster in the merged peak set (iteration 0)</p></td>
+    </tr>
+    <tr>
+      <th>it1pcs</th>
+      <td><p>the principal components to consider in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it1clusterResolution</th>
+      <td><p>resolution paramter for Seurat's  clustering (<code>Seurat::FindClusters</code>) in iteration 1</p></td>
+    </tr>
+    <tr>
+      <th>it1mostVarPeaks</th>
+      <td><p>the number of the most variable peaks to consider after iteration 1</p></td>
+    </tr>
+    <tr>
+      <th>it2pcs</th>
+      <td><p>the principal components to consider in the final iteration (2)</p></td>
+    </tr>
+    <tr>
+      <th>it2clusterResolution</th>
+      <td><p>resolution paramter for Seurat's  clustering (<code>Seurat::FindClusters</code>) in the final iteration (2)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>SummarizedExperiment</code> containing counts for each region and sample</p>
+    <p>an <code>S3</code> object containing dimensionality reduction results and clustering</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>dsa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>ChrAccRex</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/ChrAccRex/topics/loadExample'>loadExample</a></span>(<span class='st'>"dsAtac_ia_example"</span>)
-<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'>getCountsSE</span>(<span class='no'>dsa</span>, <span class='st'>"IA_prog_peaks"</span>)
-<span class='no'>se</span>
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,9 +188,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
     <h2>Author</h2>
     <p>Fabian Mueller</p>
