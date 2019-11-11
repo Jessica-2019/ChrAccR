@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PWMatrixToProbMatrix — PWMatrixToProbMatrix • ChrAccR</title>
+<title>Subsetting DsATAC datasets by sample — [,DsATAC,ANY,ANY,ANY-method • ChrAccR</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="PWMatrixToProbMatrix — PWMatrixToProbMatrix" />
-<meta property="og:description" content="convert a log2probratio PWM (PWMatrix from TFBSTools package) to a matrix containing probabilities in [0,1]" />
+<meta property="og:title" content="Subsetting DsATAC datasets by sample — [,DsATAC,ANY,ANY,ANY-method" />
+<meta property="og:description" content="NOTE: '[' operator for DsATAC does not reorder samples" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,40 +115,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PWMatrixToProbMatrix</h1>
+    <h1>Subsetting DsATAC datasets by sample</h1>
     
-    <div class="hidden name"><code>PWMatrixToProbMatrix.Rd</code></div>
+    <div class="hidden name"><code>sub-DsATAC-ANY-ANY-ANY-method.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>convert a log2probratio PWM (<code>PWMatrix</code> from TFBSTools package) to a matrix containing probabilities in [0,1]</p>
+    <p>NOTE: '[' operator for DsATAC does not reorder samples</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PWMatrixToProbMatrix</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"># S4 method for DsATAC,ANY,ANY,ANY
+[(x, i)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>log2probratio PWM (<code>PWMatrix</code> from TFBSTools package)</p></td>
+      <td><p>DsATAC object</p></td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td><p>sample names or indices</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>PWM probability matrix with values in</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Fabian Mueller</p>
   </div>
 </div>
 

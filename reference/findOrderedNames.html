@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PWMatrixToProbMatrix — PWMatrixToProbMatrix • ChrAccR</title>
+<title>findOrderedNames — findOrderedNames • ChrAccR</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="PWMatrixToProbMatrix — PWMatrixToProbMatrix" />
-<meta property="og:description" content="convert a log2probratio PWM (PWMatrix from TFBSTools package) to a matrix containing probabilities in [0,1]" />
+<meta property="og:title" content="findOrderedNames — findOrderedNames" />
+<meta property="og:description" content="find the first occurrence of a name in a vector of strings" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,29 +115,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PWMatrixToProbMatrix</h1>
+    <h1>findOrderedNames</h1>
     
-    <div class="hidden name"><code>PWMatrixToProbMatrix.Rd</code></div>
+    <div class="hidden name"><code>findOrderedNames.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>convert a log2probratio PWM (<code>PWMatrix</code> from TFBSTools package) to a matrix containing probabilities in [0,1]</p>
+    <p>find the first occurrence of a name in a vector of strings</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PWMatrixToProbMatrix</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>findOrderedNames</span>(<span class='no'>x</span>, <span class='no'>orderedNames</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>log2probratio PWM (<code>PWMatrix</code> from TFBSTools package)</p></td>
+      <th>orderedNames</th>
+      <td><p>vector of names that will be queried. This method will go through them one by one and find the first occurrence
+in the order of the orderedNames provided</p></td>
+    </tr>
+    <tr>
+      <th>exact</th>
+      <td><p>should only be exact matches be reported</p></td>
+    </tr>
+    <tr>
+      <th>ignore.case</th>
+      <td><p>should casing be ignored</p></td>
+    </tr>
+    <tr>
+      <th>ss</th>
+      <td><p>character vector in which the name should be found</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>PWM probability matrix with values in</p>
+    <p>the string that matches the first occurrence in the order of <code>orderedNames</code>. Returns <code>NA</code> if no match is found.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

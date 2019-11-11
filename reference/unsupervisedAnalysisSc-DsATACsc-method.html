@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PWMatrixToProbMatrix — PWMatrixToProbMatrix • ChrAccR</title>
+<title>unsupervisedAnalysisSc-methods — unsupervisedAnalysisSc,DsATACsc-method • ChrAccR</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="PWMatrixToProbMatrix — PWMatrixToProbMatrix" />
-<meta property="og:description" content="convert a log2probratio PWM (PWMatrix from TFBSTools package) to a matrix containing probabilities in [0,1]" />
+<meta property="og:title" content="unsupervisedAnalysisSc-methods — unsupervisedAnalysisSc,DsATACsc-method" />
+<meta property="og:description" content="Perform unsupervised analysis on single-cell data. Performs dimensionality reduction
+and clustering." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,29 +116,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PWMatrixToProbMatrix</h1>
+    <h1>unsupervisedAnalysisSc-methods</h1>
     
-    <div class="hidden name"><code>PWMatrixToProbMatrix.Rd</code></div>
+    <div class="hidden name"><code>unsupervisedAnalysisSc-DsATACsc-method.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>convert a log2probratio PWM (<code>PWMatrix</code> from TFBSTools package) to a matrix containing probabilities in [0,1]</p>
+    <p>Perform unsupervised analysis on single-cell data. Performs dimensionality reduction
+and clustering.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PWMatrixToProbMatrix</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='co'># S4 method for DsATACsc</span>
+<span class='fu'>unsupervisedAnalysisSc</span>(<span class='no'>.object</span>, <span class='no'>regionType</span>,
+  <span class='kw'>regionIdx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>dimRedMethod</span> <span class='kw'>=</span> <span class='st'>"tf-idf_irlba"</span>, <span class='kw'>usePcs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>50</span>,
+  <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"seurat_louvain"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>log2probratio PWM (<code>PWMatrix</code> from TFBSTools package)</p></td>
+      <th>.object</th>
+      <td><p><code><a href='DsATACsc-class.html'>DsATACsc</a></code> object</p></td>
+    </tr>
+    <tr>
+      <th>regionType</th>
+      <td><p>character string specifying the region type</p></td>
+    </tr>
+    <tr>
+      <th>regionIdx</th>
+      <td><p>indices of regions to be used (logical or integer vector). If <code>NULL</code> (default) all regions of the specified regionType will be used.</p></td>
+    </tr>
+    <tr>
+      <th>dimRedMethod</th>
+      <td><p>character string specifying the dimensionality reduction method. Currently on <code>"tf-idf_irlba"</code> is supported</p></td>
+    </tr>
+    <tr>
+      <th>usePcs</th>
+      <td><p>integer vector specifying the principal components to use for UMAP and clustering</p></td>
+    </tr>
+    <tr>
+      <th>clusteringMethod</th>
+      <td><p>character string specifying the clustering method. Currently on <code>"seurat_louvain"</code> is supported</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>PWM probability matrix with values in</p>
+    <p>an <code>S3</code> object containing dimensionality reduction results and clustering</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

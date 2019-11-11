@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PWMatrixToProbMatrix — PWMatrixToProbMatrix • ChrAccR</title>
+<title>iterativeLSI-methods — iterativeLSI,DsATACsc-method • ChrAccR</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="PWMatrixToProbMatrix — PWMatrixToProbMatrix" />
-<meta property="og:description" content="convert a log2probratio PWM (PWMatrix from TFBSTools package) to a matrix containing probabilities in [0,1]" />
+<meta property="og:title" content="iterativeLSI-methods — iterativeLSI,DsATACsc-method" />
+<meta property="og:description" content="EXPERIMENTAL: Perform iterative LSI clustering as described in doi:10.1101/696328" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,29 +115,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PWMatrixToProbMatrix</h1>
+    <h1>iterativeLSI-methods</h1>
     
-    <div class="hidden name"><code>PWMatrixToProbMatrix.Rd</code></div>
+    <div class="hidden name"><code>iterativeLSI-DsATACsc-method.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>convert a log2probratio PWM (<code>PWMatrix</code> from TFBSTools package) to a matrix containing probabilities in [0,1]</p>
+    <p>EXPERIMENTAL: Perform iterative LSI clustering as described in doi:10.1101/696328</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PWMatrixToProbMatrix</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='co'># S4 method for DsATACsc</span>
+<span class='fu'>iterativeLSI</span>(<span class='no'>.object</span>, <span class='kw'>it0regionType</span> <span class='kw'>=</span> <span class='st'>"t5k"</span>,
+  <span class='kw'>it0nMostAcc</span> <span class='kw'>=</span> <span class='fl'>20000L</span>, <span class='kw'>it0pcs</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>25</span>, <span class='kw'>it0clusterResolution</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
+  <span class='kw'>it0nTopPeaksPerCluster</span> <span class='kw'>=</span> <span class='fl'>2e+05</span>, <span class='kw'>it1pcs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>50</span>,
+  <span class='kw'>it1clusterResolution</span> <span class='kw'>=</span> <span class='fl'>0.8</span>, <span class='kw'>it1mostVarPeaks</span> <span class='kw'>=</span> <span class='fl'>50000L</span>,
+  <span class='kw'>it2pcs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>50</span>, <span class='kw'>it2clusterResolution</span> <span class='kw'>=</span> <span class='fl'>0.8</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>log2probratio PWM (<code>PWMatrix</code> from TFBSTools package)</p></td>
+      <th>.object</th>
+      <td><p><code><a href='DsATACsc-class.html'>DsATACsc</a></code> object</p></td>
+    </tr>
+    <tr>
+      <th>it0regionType</th>
+      <td><p>character string specifying the region type to start with</p></td>
+    </tr>
+    <tr>
+      <th>it0nMostAcc</th>
+      <td><p>the number of the most accessible regions to consider in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it0pcs</th>
+      <td><p>the principal components to consider in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it0clusterResolution</th>
+      <td><p>resolution paramter for Seurat's  clustering (<code>Seurat::FindClusters</code>) in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it0nTopPeaksPerCluster</th>
+      <td><p>the number of best peaks to be considered for each cluster in the merged peak set (iteration 0)</p></td>
+    </tr>
+    <tr>
+      <th>it1pcs</th>
+      <td><p>the principal components to consider in iteration 0</p></td>
+    </tr>
+    <tr>
+      <th>it1clusterResolution</th>
+      <td><p>resolution paramter for Seurat's  clustering (<code>Seurat::FindClusters</code>) in iteration 1</p></td>
+    </tr>
+    <tr>
+      <th>it1mostVarPeaks</th>
+      <td><p>the number of the most variable peaks to consider after iteration 1</p></td>
+    </tr>
+    <tr>
+      <th>it2pcs</th>
+      <td><p>the principal components to consider in the final iteration (2)</p></td>
+    </tr>
+    <tr>
+      <th>it2clusterResolution</th>
+      <td><p>resolution paramter for Seurat's  clustering (<code>Seurat::FindClusters</code>) in the final iteration (2)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>PWM probability matrix with values in</p>
+    <p>an <code>S3</code> object containing dimensionality reduction results and clustering</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

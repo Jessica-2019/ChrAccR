@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PWMatrixToProbMatrix — PWMatrixToProbMatrix • ChrAccR</title>
+<title>getMonocleCellDataSet-methods — getMonocleCellDataSet,DsATAC-method • ChrAccR</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="PWMatrixToProbMatrix — PWMatrixToProbMatrix" />
-<meta property="og:description" content="convert a log2probratio PWM (PWMatrix from TFBSTools package) to a matrix containing probabilities in [0,1]" />
+<meta property="og:title" content="getMonocleCellDataSet-methods — getMonocleCellDataSet,DsATAC-method" />
+<meta property="og:description" content="Obtain cell_data_set object for analysis using the monocle3 package" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,29 +115,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PWMatrixToProbMatrix</h1>
+    <h1>getMonocleCellDataSet-methods</h1>
     
-    <div class="hidden name"><code>PWMatrixToProbMatrix.Rd</code></div>
+    <div class="hidden name"><code>getMonocleCellDataSet-DsATAC-method.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>convert a log2probratio PWM (<code>PWMatrix</code> from TFBSTools package) to a matrix containing probabilities in [0,1]</p>
+    <p>Obtain <code>cell_data_set</code> object for analysis using the <code>monocle3</code> package</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PWMatrixToProbMatrix</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='co'># S4 method for DsATAC</span>
+<span class='fu'>getMonocleCellDataSet</span>(<span class='no'>.object</span>, <span class='no'>regionType</span>,
+  <span class='kw'>binarize</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>log2probratio PWM (<code>PWMatrix</code> from TFBSTools package)</p></td>
+      <th>.object</th>
+      <td><p><code><a href='DsATAC-class.html'>DsATAC</a></code> object</p></td>
+    </tr>
+    <tr>
+      <th>regionType</th>
+      <td><p>name of the region type to be exported</p></td>
+    </tr>
+    <tr>
+      <th>binarize</th>
+      <td><p>should the counts be binarized</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>PWM probability matrix with values in</p>
+    <p>a <code>cell_data_set</code> object containing the counts for the specified region type</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

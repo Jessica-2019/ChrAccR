@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PWMatrixToProbMatrix — PWMatrixToProbMatrix • ChrAccR</title>
+<title>getMotifOccurrences — getMotifOccurrences • ChrAccR</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="PWMatrixToProbMatrix — PWMatrixToProbMatrix" />
-<meta property="og:description" content="convert a log2probratio PWM (PWMatrix from TFBSTools package) to a matrix containing probabilities in [0,1]" />
+<meta property="og:title" content="getMotifOccurrences — getMotifOccurrences" />
+<meta property="og:description" content="Find occurrences of motifs in a given genome" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,29 +115,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PWMatrixToProbMatrix</h1>
+    <h1>getMotifOccurrences</h1>
     
-    <div class="hidden name"><code>PWMatrixToProbMatrix.Rd</code></div>
+    <div class="hidden name"><code>getMotifOccurrences.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>convert a log2probratio PWM (<code>PWMatrix</code> from TFBSTools package) to a matrix containing probabilities in [0,1]</p>
+    <p>Find occurrences of motifs in a given genome</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PWMatrixToProbMatrix</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>getMotifOccurrences</span>(<span class='kw'>motifNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>motifDb</span> <span class='kw'>=</span> <span class='st'>"jaspar"</span>,
+  <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>"hg38"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>log2probratio PWM (<code>PWMatrix</code> from TFBSTools package)</p></td>
+      <th>motifNames</th>
+      <td><p>character vector of motif names</p></td>
+    </tr>
+    <tr>
+      <th>motifDb</th>
+      <td><p>either a character string (currently only "jaspar" and sets contained in <code>chromVARmotifs</code> ("homer", "encode", "cisbp") are supported) or an object containing PWMs
+that can be used by <code>motifmatchr::matchMotifs</code> (such as an <code>PFMatrixList</code> or <code>PWMatrixList</code> object)</p></td>
+    </tr>
+    <tr>
+      <th>genome</th>
+      <td><p>character string specifying genome assembly</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>PWM probability matrix with values in</p>
+    <p>a <code>GenomicRangesList</code> containing motif occurrences</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
